@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metaclean"
+version = "1.0.0"
+description = "Universal file metadata inspection and sanitization CLI"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "MetaClean Project"}]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: Android",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+magic = ["python-magic>=0.4.27; platform_system != 'Windows'"]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[project.scripts]
+metaclean = "metaclean.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["metaclean*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
